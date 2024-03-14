@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contenido Automático</title>
+</head>
+<body>
+
+<div id="contenido"></div>
+
+<script>
+    // Función para generar contenido automáticamente
+    function generarContenido() {
+        var contenido = document.getElementById('contenido');
+        contenido.innerHTML += 'Nuevo contenido generado automáticamente<br>';
+    }
+
+    // Generar contenido cada 3 segundos (3000 milisegundos)
+    setInterval(generarContenido, 3000);
+</script>
+
+</body>
+</html>

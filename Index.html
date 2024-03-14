@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contraseñas</title>
+</head>
+<body>
+    <div id="contenedor">
+        <header>
+            <h1>Creador de contraseñas</h1>
+        </header>
+
+        <div id="contenido">
+            Cantidad de digitos: <input type="text" id="numero"><br><br>
+            Seleeccione los elementos para la contraseña:
+            <table>
+                <tr>
+                    <th>Mayúsculas</th>
+                    <th><input type="checkbox" name="" id="checkMay"></th>
+                </tr>
+                <tr>
+                    <th>Minusculas</th>
+                    <th><input type="checkbox" name="" id="checkMin"></th>
+                </tr>
+                <tr>
+                    <th>Números</th>
+                    <th><input type="checkbox" name="" id="checkNum"></th>
+                </tr>
+                <tr>
+                    <th>Simbolos básicos</th>
+                    <th><input type="checkbox" name="" id="checkSim1"></th>
+                </tr>
+                <tr>
+                    <th>Acentuación</th>
+                    <th><input type="checkbox" name="" id="checkSim2"></th>
+                </tr>
+                <tr>
+                    <th>Agrupación</th>
+                    <th><input type="checkbox" name="" id="checkSim3"></th>
+                </tr>
+            </table>
+            <br><input type="button" value="Generar" onclick="generarContraseña()">
+            <div id="contraseña"></div>
+
+        </div>
+    </div>
+    <script>
+        function generarContraseña(){
+            var cantidad = document.getElementById('numero').value;
+            var texto = document.getElementById('contraseña');
+            var contraseña = '';
+            var caracteres = '';
+
+            var mayusculas = document.getElementById('checkMay').checked;
+            var minusculas = document.getElementById('checkMin').checked;
+            var numeros = document.getElementById('checkNum').checked;
+            var simbolos1 = document.getElementById('checkSim1').checked;
+            var simbolos2 = document.getElementById('checkSim2').checked;
+            var simbolos3 = document.getElementById('checkSim3').checked;
+
+            var crtMayusculas = 'ABCDEFGHIJKLMONPQRSTUVWXYZ';
+            var crtMinusculas = 'abcdefghijklmnopqrstuvwxyz';
+            var crtNumeros = '0987654321';
+            var crtSimbolos1 = '#$%&/=?-_.,;:^*+~';
+            var crtSimbolos2 = '¡¨´';
+            var crtSimbolos3 = '()[]{}';
+
+            if(mayusculas){
+                caracteres += crtMayusculas;
+            }
+            if(minusculas){
+                caracteres += crtMinusculas;
+            }
+            if(numeros){
+                caracteres += crtNumeros;
+            }
+            if(simbolos1){
+                caracteres += crtSimbolos1;
+            }
+            if(simbolos2){
+                caracteres += crtSimbolos2;
+            }
+            if(simbolos3){
+                caracteres += crtSimbolos3;
+            }
+            if(caracteres.length === 0){
+                texto.textContent = "Seleccione al menos un elemento";
+                return;
+            }
+
+            
+
+            for(let i = 0; i < cantidad; i++){
+                var caracteresAleatorios = caracteres.charAt(Math.floor(Math.random() * caracteres.length));
+                contraseña += caracteresAleatorios;
+            }
+            texto.textContent = contraseña;
+        }
+    </script>
+</body>
+</html>
